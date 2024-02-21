@@ -1,1 +1,1 @@
-# Pong-Game
+# This is a Pong Game that is coded in C++ using the raylib library. 
