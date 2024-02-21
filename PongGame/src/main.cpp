@@ -2,7 +2,10 @@
 #include <raylib.h>
 #include "ball.h"
 
+
 using namespace std; 
+
+Ball ball; 
 
 int main()
 {
@@ -12,12 +15,20 @@ int main()
     InitWindow(screen_width, screen_height, "My Pong Game!");
     SetTargetFPS(60); 
 
+    ball.x = screen_width / 2; 
+    ball.y = screen_height / 2; 
+
     while (WindowShouldClose() == false)
     {
         BeginDrawing(); 
 
+        // Updating
+        ball.Update(); 
+
         // Drawuing
-        DrawCircle(screen_width / 2, screen_height / 2, 20, WHITE); 
+        ClearBackground(BLACK); 
+        DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, WHITE); 
+        ball.Draw(); 
         DrawRectangle(10, (screen_height / 2 - 60), 25, 120, WHITE);
         DrawRectangle(screen_width - 35, (screen_height / 2 - 60), 25, 120, WHITE); 
 

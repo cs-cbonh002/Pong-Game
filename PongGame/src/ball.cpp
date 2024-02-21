@@ -3,23 +3,22 @@
 
 Ball::Ball()
 {
-    x = 100;
-    y = 100;
-    speedX = 5;
-    speedY = 5;
-    radius = 15;
+    
+    speed_x = 7;
+    speed_y = 7;
+    radius = 20;
 }
 
 void Ball::Update()
 {
-    x += speedX;
-    y += speedY;
+    x += speed_x;
+    y += speed_y;
 
     if (x + radius >= GetScreenWidth() || x - radius <= 0)
-        speedX *= -1;
+        speed_x *= -1;
 
     if (y + radius >= GetScreenHeight() || y - radius <= 0)
-        speedY *= -1;
+        speed_y *= -1;
 }
 
 void Ball::Draw()

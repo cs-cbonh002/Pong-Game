@@ -7,10 +7,10 @@ public:
     void Update();
     void Draw();
 
-private:
-    int x;
-    int y;
-    int speedX;
-    int speedY;
+public:
+    float x;
+    float y;
+    int speed_x;
+    int speed_y;
     int radius;
 };
