@@ -1,27 +1,25 @@
+#include <iostream>
 #include <raylib.h>
 #include "ball.h"
 
+using namespace std; 
+
 int main()
 {
-    Color darkGreen = Color{20, 160, 133, 255};
+    cout << "Starting the game" << endl; 
+    const int screen_width = 1280; 
+    const int screen_height = 800; 
+    InitWindow(screen_width, screen_height, "My Pong Game!");
+    SetTargetFPS(60); 
 
-    const int screenWidth = 800;
-    const int screenHeight = 600;
-
-    Ball ball = Ball();
-
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
+    while (WindowShouldClose() == false)
     {
-        BeginDrawing();
-        ClearBackground(darkGreen);
-        ball.Update();
-        ball.Draw();
-        EndDrawing();
+        BeginDrawing(); 
+
+        EndDrawing(); 
     }
 
-    CloseWindow();
+    CloseWindow(); 
+
     return 0;
 }
