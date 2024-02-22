@@ -12,5 +12,8 @@ class Paddle
     Paddle(); 
     void Draw(); 
     void Update(); 
+
+    protected: 
+    void LimitMovement(); 
     
 };

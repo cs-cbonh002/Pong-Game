@@ -2,12 +2,15 @@
 #include <raylib.h>
 #include "ball.h"
 #include "paddle.h"
+#include "cpuPaddle.h"
 
 
 using namespace std; 
 
 Ball ball; 
 Paddle player; 
+CpuPaddle cpu; 
+
 
 int main()
 {
@@ -26,6 +29,12 @@ int main()
     player.y = screen_height / 2 - player.height / 2; 
     player.speed = 6; 
 
+    cpu.width = 25; 
+    cpu.height = 120; 
+    cpu.x = 10; 
+    cpu.y = screen_height / 2 - cpu.height / 2; 
+    cpu.speed = 6; 
+
     while (WindowShouldClose() == false)
     {
         BeginDrawing(); 
@@ -33,12 +42,13 @@ int main()
         // Updating
         ball.Update(); 
         player.Update(); 
+        cpu.Update(ball.y); 
 
         // Drawuing
         ClearBackground(BLACK); 
         DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, WHITE); 
         ball.Draw(); 
-        DrawRectangle(10, (screen_height / 2 - 60), 25, 120, WHITE);
+        cpu.Draw(); 
         player.Draw(); 
 
         EndDrawing(); 

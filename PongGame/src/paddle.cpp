@@ -21,4 +21,18 @@ void Paddle::Update()
     {
         y = y + speed; 
     }
+
+    LimitMovement(); 
+}
+
+void Paddle::LimitMovement()
+{
+    if (y <= 0)
+    {
+        y = 0; 
+    }
+    if (y + height >= GetScreenHeight())
+    {
+        y = GetScreenHeight() - height; 
+    }
 }
