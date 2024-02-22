@@ -7,6 +7,9 @@
 
 using namespace std; 
 
+int player_score = 0; 
+int cpu_score = 0; 
+
 Ball ball; 
 Paddle player; 
 CpuPaddle cpu; 
@@ -40,9 +43,19 @@ int main()
         BeginDrawing(); 
 
         // Updating
-        ball.Update(); 
+        ball.Update(cpu_score, player_score); 
         player.Update(); 
         cpu.Update(ball.y); 
+
+        // Checking for collisions
+        if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{player.x, player.y, player.width, player.height}))
+        {
+            ball.speed_x += -1; 
+        }
+        if (CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{cpu.x, cpu.y, cpu.width, cpu.height}))
+        {
+            ball.speed_x += -1; 
+        }
 
         // Drawuing
         ClearBackground(BLACK); 
@@ -50,6 +63,8 @@ int main()
         ball.Draw(); 
         cpu.Draw(); 
         player.Draw(); 
+        DrawText(TextFormat("%i", cpu_score), screen_width / 4 - 20, 20, 80, WHITE); 
+        DrawText(TextFormat("%i", player_score), 3 * screen_width / 4 - 20, 20, 80, WHITE); 
 
         EndDrawing(); 
     }

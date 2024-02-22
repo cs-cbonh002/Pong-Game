@@ -4,8 +4,9 @@ class Ball
 {
 public:
     Ball();
-    void Update();
+    void Update(int& cpu_score, int& player_score);
     void Draw();
+    void ResetBall(); 
 
 public:
     float x;
